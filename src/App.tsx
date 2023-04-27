@@ -1,12 +1,14 @@
 import { useState, useEffect } from "react";
 import "./App.css";
 const API_URL: string = "https://dummyjson.com/quotes/random";
+
 export default function App() {
     // states
     const [quote, setQuote] = useState<{ text: string; author: string }>({
         text: "",
         author: "",
     });
+    const [show, setShow] = useState<boolean>(false);
 
     // component did mounted
     useEffect(() => {
@@ -15,6 +17,7 @@ export default function App() {
 
     // fetch quote
     const fetchQuote = async () => {
+        setShow(false);
         try {
             const res: Response = await fetch(API_URL);
             const data = await res.json();
@@ -22,6 +25,7 @@ export default function App() {
                 text: data.quote,
                 author: data.author,
             });
+            setShow(true);
         } catch (e) {
             if (e instanceof Error) {
                 console.error(e.message);
@@ -34,8 +38,13 @@ export default function App() {
     return (
         <div className="card p-2" id="quote-box">
             <div className="card-body">
-                <p id="text">❝{quote.text}❞</p>
-                <p className="text-end" id="author">
+                <p id="text" className={show ? "show " : "hide"}>
+                    ❝{quote.text}❞
+                </p>
+                <p
+                    className={`text-end ${show ? "show " : "hide"}`}
+                    id="author"
+                >
                     — {quote.author}
                 </p>
                 <div className=" mt-3 d-flex justify-content-end">

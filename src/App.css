@@ -2,10 +2,9 @@
 
 #quote-box {
     min-height: 200px;
-    width: 100%;
     max-width: 600px;
+    width: 95%;
 }
-
 #text {
     font-family: "Playfair Display", serif;
     font-size: 32px;
@@ -14,6 +13,19 @@
 #author {
     font-size: 24px;
     font-style: italic;
-
     font-family: "Arial", san-serif;
+}
+.hide {
+    opacity: 0;
+}
+.show {
+    animation: fade-in 1.5s forwards;
+}
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
