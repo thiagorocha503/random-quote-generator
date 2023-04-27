@@ -1,6 +1,6 @@
 {
   "name": "random-quote-generator",
-  "homepage": "http://thiagorocha503.github.io/random-quote-generator",
+  "homepage": "https://thiagorocha503.github.io/random-quote-generator",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
