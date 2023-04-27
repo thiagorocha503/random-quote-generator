@@ -2,15 +2,20 @@ import { useState, useEffect } from "react";
 import "./App.css";
 const API_URL: string = "https://dummyjson.com/quotes/random";
 
+type Quote = {
+    text: string;
+    author: string;
+};
+
 export default function App() {
     // states
-    const [quote, setQuote] = useState<{ text: string; author: string }>({
+    const [quote, setQuote] = useState<Quote>({
         text: "",
         author: "",
     });
     const [show, setShow] = useState<boolean>(false);
 
-    // component did mounted
+    // component did mount
     useEffect(() => {
         fetchQuote();
     }, []);
